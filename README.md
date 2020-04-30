@@ -87,7 +87,7 @@ $
 
 ## Debug output
 
-If the ``GetShapesEnclosing`` method is called with a debug prefix (as in the ``test_tiger.py`` example script), additional output files are generated; assuming a debug prefix of ``debug``:
+If the ``GetShapesEnclosing`` method is called with a debug prefix (as in the ``test_tiger.py`` example script), additional output files are generated. Assuming a debug prefix of "``debug``":
 
 - ``debug.outlines.txt`` : the (simplified) shape outlines
 - ``debug.potential.txt`` : line sections that potentially intersect with the horizontal ray cast from the point of interest.
