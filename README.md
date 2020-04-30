@@ -1,6 +1,6 @@
 # TIGERLine
 
-Simple utility to filter TIGERLine shape data, and detect collisions of a point with the shapes.
+Simple Python utility to filter TIGERLine shape data, and detect collisions of a point with the shapes.
 
 For a description of the TIGERLine format, see [the documentation](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html).
 
