@@ -2,7 +2,7 @@
 
 Simple utility to filter TIGERLine shape data, and detect collisions of a point with the shapes.
 
-For a description of the TIGERLine format, see ['the documentation'](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html).
+For a description of the TIGERLine format, see [the documentation](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html).
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ The ``TigerLine.py`` script requires ``shapefile`` from the ``pyshp`` modules, w
 
 ## Example
 
-This example assumes you have downloaded the 2019 U.S.A. state shapefiles (see the "States (and equivalent)" section ['here'](https://www.census.gov/cgi-bin/geo/shapefiles/index.php)).
+This example assumes you have downloaded the 2019 U.S.A. state shapefiles (see the "States (and equivalent)" section [here](https://www.census.gov/cgi-bin/geo/shapefiles/index.php)).
 
 Running the example script ``test_tiger.py`` allows you to determine which state contains a point specified using longitude and latitude:
 
@@ -20,11 +20,11 @@ python3 test_tiger.py <prefix path to shapefiles> <longitude> <latitude> [granul
 
 Here, ``prefix path to shapefiles`` covers the directory path and the file prefix for the TIGERLine data set, and ``longitude`` and ``latitude`` are what one would expect.
 
-The _optional_ parameters ``granularity``, ``min_dr``, and ``filters`` control the size of the grid used to localize poitns and line segments, the minimum separation between consecutive points in a shape, and what shapes from the file are used in the search:
+The _optional_ parameters ``granularity``, ``min_dr``, and ``filters`` control the size of the grid used to localize points and line segments, the minimum separation between consecutive points in a shape, and what shapes from the file are used in the search:
 
 - ``granularity`` : the size of grid cells
-- ``min_dr`` : the minimum separation between consecutive points in a shape; larger values will "simplify" the shape by reducing the number of boundary vertices. The resultant lower resolution shapes are more efficient to process.
-- ``filters`` : Filter the input shape data according to the fields in section 3.18 of the ['TIGERLine documentation'](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html), with multiple filters separated by a semicolon (``;``). The filter field and keys are therefore defined in the format ``field1:value1,value2,... ; field2:value1,value2,...``.
+- ``min_dr`` : the minimum separation between consecutive points in a shape; larger values will "simplify" the shape by reducing the number of boundary vertices. The resultant lower resolution shapes are more efficient to process, and the results are more numerically stable.
+- ``filters`` : Filter the input shape data according to the fields in section 3.18 of the [TIGERLine documentation](https://www.census.gov/programs-surveys/geography/technical-documentation/complete-technical-documentation/tiger-geo-line.html), with multiple filters separated by a semicolon (``;``). The filter field and keys are therefore defined in the format ``field1:value1,value2,... ; field2:value1,value2,...``.
 
 Worked example:
 
@@ -32,9 +32,9 @@ Worked example:
 python3 test_tiger.py tl_2019_us_state/tl_2019_us_state -120 37 granularity=0.2 min_dr=1e-1 filters="STUSPS:CA,IL,OK,MI"
 ```
 
-This example attempts to locate the state enclosing the point at longitude and latitude ``-120,37``. Search is restricted to the states of California, Illinois, Oklahoma, and Michigan. The shapes are simplified by requiring a separation of ``min_dr=1e-1`` (i.e., 0.1 units) to increase the performance of the search.
+This example attempts to locate the state enclosing the point at longitude and latitude ``-120,37``. Search is restricted to the states of California, Illinois, Oklahoma, and Michigan. The shapes are simplified by requiring a separation of ``min_dr=1e-1`` (i.e., 0.1 units) between consecutive points defining  shape boundary to increase performance.
 
-Using a mid-2014 MacBook Pro (2.2 GHz Intel i7, 16 GB of DDR3 RAM clocked at 1.6 GHz), the output of the example above is:
+Using a mid-2014 MacBook Pro, the output of the example above is:
 
 ```
 $ time python3 test_tiger.py tl_2019_us_state/tl_2019_us_state -120 37 granularity=0.2 min_dr=1e-1 filters="STUSPS:CA,IL,OK,MI"
