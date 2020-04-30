@@ -1,4 +1,4 @@
-# TigerLine collision
+# TIGERLine
 
 Simple utility to filter TIGERLine shape data, and detect collisions of a point with the shapes.
 
