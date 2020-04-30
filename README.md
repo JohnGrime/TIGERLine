@@ -8,6 +8,10 @@ For a description of the TIGERLine format, see [the documentation](https://www.c
 
 The ``TigerLine.py`` script requires ``shapefile`` from the ``pyshp`` modules, which can be installed via e.g. ``pip3 install pyshp``.
 
+## Approach
+
+The system is discretized into a grid (cell size specified by the ``granularity`` parameter), and all line sections that span or intersect a grid cell are noted. A horizontal "ray" is then cast from the point of interest, and intersections of that ray with shape line sections are counted; if the final count is zero or even, the target point is outside that shape. If the final count is odd, the point is inside the shape.
+
 ## Example usage
 
 This example assumes you have downloaded the 2019 U.S.A. state shapefiles (see the "States (and equivalent)" section [here](https://www.census.gov/cgi-bin/geo/shapefiles/index.php)).
@@ -80,10 +84,6 @@ user  0m0.302s
 sys 0m0.080s
 $
 ```
-
-## Approach
-
-The system is discretized into a grid (cell size specified by the ``granularity`` parameter), and all line sections that span or intersect a grid cell are noted. A horizontal "ray" is then cast from the point of interest, and intersections of that ray with shape line sections are counted; if the final count is zero or even, the target point is outside that shape. If the final count is odd, the point is inside the shape.
 
 ## Debug output
 
