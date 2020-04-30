@@ -29,11 +29,12 @@ The _optional_ parameters ``granularity``, ``min_dr``, and ``filters`` control t
 __Worked example__
 
 
+The following example attempts to locate the state enclosing the point at longitude and latitude ``-120,37``. Search is restricted to the states of California, Illinois, Oklahoma, and Michigan. The shapes are simplified by requiring a separation of ``min_dr=1e-1`` (i.e., 0.1 units) between consecutive points defining  shape boundary to increase performance:
+
+
 ```
 python3 test_tiger.py tl_2019_us_state/tl_2019_us_state -120 37 granularity=0.2 min_dr=1e-1 filters="STUSPS:CA,IL,OK,MI"
 ```
-
-This example attempts to locate the state enclosing the point at longitude and latitude ``-120,37``. Search is restricted to the states of California, Illinois, Oklahoma, and Michigan. The shapes are simplified by requiring a separation of ``min_dr=1e-1`` (i.e., 0.1 units) between consecutive points defining  shape boundary to increase performance.
 
 Using a mid-2014 MacBook Pro, the output of the example above is:
 
