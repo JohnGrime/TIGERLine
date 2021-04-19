@@ -13,7 +13,9 @@
 #
 # I typically use min_dr ~= 1e-2 (approx. 100m), which preserves the basic
 # boundaries while making the calculations more stable - and faster, as shapes
-# are then defined using fewer points.
+# are then defined using fewer points. NOTE: simplifying the shapes can
+# mislocate points close to state boundaries, so be careful; you may need
+# finer-grained simplifcation, or not to use simplification at all!
 #
 # The class requires "shapefile" from the "pyshp" module:
 #
